@@ -1,0 +1,17 @@
+Run "sudo setup_of_router_lab.sh" to initialize the routers and hosts for the lab. "sudo clean_of_router_lab.sh" cleanly tears down thenvironment.
+
+**** Pre-Requisites ****
+- Ubuntu 12.04 or later
+- apt-get install openvswitch-switch
+
+
+**** Testing The Setup ****
+setup_of_router_lab.sh creates 2 IP namespaces: 10_20_30_0 and 30_20_10_0.  The host interfaces are "host1" and "host2". "host1" is in namespace 10_20_30_0, "host2" is in namespace 30_20_10_0.
+
+Ping host1 to host2:
+
+sudo ip netns exec 10_20_30_0 ping -I host1 30.20.10.2
+
+Ping host2 to host1:
+
+sudo ip netns exec 10_20_30_0 ping -I host2 10.20.30.2
