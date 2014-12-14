@@ -1,0 +1,39 @@
+Introduction:
+
+This code is an example of basic NLP techniques applied to finding the proper
+segmentation of hashtags. For example, the hashtag #rockandroll is interpreted
+by humans implicitly as "rock and roll". The hashtag_segmenter processes a set
+of hashtags and scores each possible segmentation against a probabilistic
+bigram language model. The segmentation with the highest score comes is
+reported as the segmentation for the hashtag.
+
+Sample Data:
+
+Sample corpus data can be found in the corpus_data directory. The bigram and
+unigram data included is from the Google ngram corpus. Any corpus data can
+be used, so long as it follows this format:
+
+<ngram> <count>
+
+For example, in the bigram corpus 'ngram' is the bigram (example bigram entry:
+"hey there 120491", where "hey there" is the bigram).
+
+The format of the hashtag file is 1 hashtag per line ('#' included).
+
+Checking Segmentation Accuracy:
+
+Included is code to calculate word error rate (WER) for use as a measure
+of accuracy for the hashtag_segmenter. The WER of course will vary based
+on the input data (corpus, hashtags, etc.). As you will see this implmentation
+is not perfect and can certainly be optimized for certain hashtags, but it
+is enough to demonstrate the basic concept with reasonable WER.
+
+Usage:
+
+hashtag_segmenter.py <hashtags file> <bigram corpus file> <unigram corpus file>
+
+References:
+
+http://en.wikipedia.org/wiki/N-gram
+http://en.wikipedia.org/wiki/Language_model
+http://storage.googleapis.com/books/ngrams/books/datasetsv2.html
